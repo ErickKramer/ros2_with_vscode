@@ -1,0 +1,73 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) ROS2 node",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/install/${input:package}/lib/${input:package}/${input:program}",
+            "args": [],
+            "preLaunchTask": "source-foxy",
+            "envFile": "${workspaceFolder}/local_foxy_ws.env",
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+              {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+              }
+            ]
+        },
+        {
+            "name": "ROS: Attach",
+            "type": "ros",
+            "request": "attach"
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: ROS2 current file",
+            "type": "python",
+            "preLaunchTask": "source-foxy",
+            "envFile": "${workspaceFolder}/local_foxy_ws.env",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: ROS2 launch test",
+            "type": "python",
+            "request": "launch",
+            "preLaunchTask": "source-foxy",
+            "envFile": "${workspaceFolder}/local_foxy_ws.env",
+            "program": "/opt/ros/foxy/bin/launch_test",
+            "args": ["${file}"],
+            "console": "integratedTerminal"
+        }
+    ],
+    "inputs": [
+    {
+      "id": "package",
+      "type": "promptString",
+      "description": "Package name",
+      "default": "demo_nodes_cpp"
+    },
+    {
+      "id": "program",
+      "type": "promptString",
+      "description": "Program name",
+      "default": "talker"
+    }
+  ]
+}

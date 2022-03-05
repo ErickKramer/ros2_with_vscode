@@ -1,0 +1,86 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        // Build tasks
+        {
+            "label": "build workspace",
+            "detail": "Build ROS2 workspace",
+            "type": "shell",
+            "command": "colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "build pedantic release",
+            "detail": "Build workspace with release info and with all warnings enabled",
+            "type": "shell",
+            "command": "colcon build --symlink-install --cmake-args '-DCMAKE_BUILD_TYPE=RelWithDebInfo' '-DCMAKE_EXPORT_COMPILE_COMMANDS=On' -Wall -Wextra -Wpedantic",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "build single package",
+            "detail": "Build single ROS2 package",
+            "type": "shell",
+            "command": "colcon build --symlink-install --packages-select ${input:package} --cmake-args '-DCMAKE_EXPORT_COMPILE_COMMANDS=On'",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "debug workspace",
+            "detail": "Build ROS2 workspace with debug symbols",
+            "type": "shell",
+            "command": "colcon build --symlink-install  --cmake-args '-DCMAKE_BUILD_TYPE=Debug'",
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "debug single package",
+            "detail": "Build single ROS2 package with debug symbols",
+            "type": "shell",
+            "command": "colcon build --symlink-install --packages-select ${input:package} --cmake-args '-DCMAKE_BUILD_TYPE=Debug'",
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "source-foxy",
+            "detail": "Sources the current workspace with zsh shell",
+            "type": "shell",
+            "command": "source ${workspaceFolder}/install/setup.zsh && printenv > ${workspaceFolder}/local_foxy_ws.env",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "test workspace",
+            "detail": "Run all unit tests and show results.",
+            "type": "shell",
+            "command": "colcon test && colcon test-result --all",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+    ],
+    "inputs": [
+        {
+            "id": "package",
+            "type": "promptString",
+            "description": "Package name",
+            "default": "demo_nodes_cpp"
+        }
+    ]
+}
