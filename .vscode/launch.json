@@ -10,8 +10,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/install/${input:package}/lib/${input:package}/${input:program}",
             "args": [],
-            "preLaunchTask": "source-foxy",
-            "envFile": "${workspaceFolder}/local_foxy_ws.env",
+            "preLaunchTask": "source-humble",
+            "envFile": "${workspaceFolder}/local_humble_ws.env",
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "externalConsole": false,
@@ -30,6 +30,12 @@
             "request": "attach"
         },
         {
+            "name": "ROS: Debug launch",
+            "type": "ros",
+            "request": "debug_launch",
+            "target": "${file}"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
@@ -39,8 +45,8 @@
         {
             "name": "Python: ROS2 current file",
             "type": "python",
-            "preLaunchTask": "source-foxy",
-            "envFile": "${workspaceFolder}/local_foxy_ws.env",
+            "preLaunchTask": "source-humble",
+            "envFile": "${workspaceFolder}/local_humble_ws.env",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
@@ -49,9 +55,9 @@
             "name": "Python: ROS2 launch test",
             "type": "python",
             "request": "launch",
-            "preLaunchTask": "source-foxy",
-            "envFile": "${workspaceFolder}/local_foxy_ws.env",
-            "program": "/opt/ros/foxy/bin/launch_test",
+            "preLaunchTask": "source-humble",
+            "envFile": "${workspaceFolder}/local_humble_ws.env",
+            "program": "/opt/ros/humble/bin/launch_test",
             "args": ["${file}"],
             "console": "integratedTerminal"
         }

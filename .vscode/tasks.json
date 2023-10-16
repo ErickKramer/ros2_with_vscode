@@ -6,7 +6,7 @@
         // Build tasks
         {
             "label": "build workspace",
-            "detail": "Build ROS2 workspace",
+            "detail": "Build ROS 2 workspace",
             "type": "shell",
             "command": "colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
             "group": {
@@ -28,7 +28,7 @@
         },
         {
             "label": "build single package",
-            "detail": "Build single ROS2 package",
+            "detail": "Build single ROS 2 package",
             "type": "shell",
             "command": "colcon build --symlink-install --packages-select ${input:package} --cmake-args '-DCMAKE_EXPORT_COMPILE_COMMANDS=On'",
             "group": {
@@ -39,7 +39,7 @@
         },
         {
             "label": "debug workspace",
-            "detail": "Build ROS2 workspace with debug symbols",
+            "detail": "Build ROS 2 workspace with debug symbols",
             "type": "shell",
             "command": "colcon build --symlink-install  --cmake-args '-DCMAKE_BUILD_TYPE=Debug'",
             "group": "build",
@@ -47,17 +47,17 @@
         },
         {
             "label": "debug single package",
-            "detail": "Build single ROS2 package with debug symbols",
+            "detail": "Build single ROS 2 package with debug symbols",
             "type": "shell",
             "command": "colcon build --symlink-install --packages-select ${input:package} --cmake-args '-DCMAKE_BUILD_TYPE=Debug'",
             "group": "build",
             "problemMatcher": "$gcc"
         },
         {
-            "label": "source-foxy",
-            "detail": "Sources the current workspace with zsh shell",
+            "label": "source-humble",
+            "detail": "Sources the current workspace with bash shell",
             "type": "shell",
-            "command": "source ${workspaceFolder}/install/setup.zsh && printenv > ${workspaceFolder}/local_foxy_ws.env",
+            "command": "source ${workspaceFolder}/install/setup.bash && printenv > ${workspaceFolder}/local_humble_ws.env",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -73,7 +73,7 @@
                 "kind": "test",
                 "isDefault": true
             }
-        },
+        }
     ],
     "inputs": [
         {

@@ -1,0 +1,5 @@
+jeff-hykin.better-cpp-syntax
+josetr.cmake-language-support-vscode
+ms-vscode.cmake-tools
+ms-vscode.cpptools
+xaver.clang-format
